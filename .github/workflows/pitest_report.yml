@@ -3,20 +3,15 @@ jobs:
   pitest-report:
     runs-on: ubuntu-latest
     steps:
-      - name: Log
-        working-directory: .
-        run: |
-          ls -la
-        shell: bash
-#      - uses: actions/checkout@v3
-#        with:
-#          fetch-depth: 0
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: 17
       - name: Run build with Gradle Wrapper
-        run: ./gradlew pitest
+        run: ./gradlew clean
       - name: Log
         working-directory: .
         run: |
